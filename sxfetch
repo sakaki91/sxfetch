@@ -1,7 +1,7 @@
 #!/bin/bash
 # sxfetch by sakaki91
 
-VERSION="1"
+VERSION="1.1"
 
 . /etc/os-release ; OS="$NAME"
 KERNEL="$(awk '{ print $1, $3 }' /proc/version)"
@@ -37,6 +37,6 @@ printf "${LINE1} OS:        ${INFO}${OS}${RESET}\n"
 printf "${LINE2} KERNEL:    ${INFO}${KERNEL}${RESET}\n"
 printf "${LINE3} UPTIME:    ${INFO}${UPTIME_H}:${UPTIME_M}${RESET}\n"
 printf "${LINE4} SHELL:     ${INFO}${SHELL_I}${RESET}\n"
-printf "${LINE5} CPU:       ${INFO}${CPU}${CPU_CORES}${RESET}\n"
+printf "${LINE5} CPU:       ${INFO}${CPU} ${CPU_CORES}${RESET}\n"
 printf "${LINE6} RAM:       ${INFO}${FREE_RAM} MiB / ${RAM} MiB${RESET}\n"
 printf "${LINE7} SWAP:      ${INFO}${FREE_SWAP} MiB / ${SWAP} MiB${RESET}\n\n"
