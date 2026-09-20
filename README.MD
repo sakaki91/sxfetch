@@ -1,7 +1,8 @@
-# SXFETCH
+# sxfetch
 
-### How to install?
+## How to install?
 ```
 git clone https://github.com/sakaki91/sxfetch
 cd sxfetch
-sudo cp sxfetch /bin```
+sudo cp sxfetch /bin
+```
