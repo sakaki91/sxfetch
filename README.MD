@@ -1,6 +1,6 @@
 # sxfetch
 
-## How to install?
+__How to install?__  
 ```
 git clone https://github.com/sakaki91/sxfetch
 cd sxfetch
