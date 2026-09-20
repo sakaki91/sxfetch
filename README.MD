@@ -1,5 +1,5 @@
 # sxfetch
-a small system information utility for Linux systems.<br>  
+a small system information utility for Linux systems.  
 __How to install?__  
 ```
 $ git clone https://github.com/sakaki91/sxfetch
