@@ -1,7 +1,7 @@
 #!/bin/bash
 # sxfetch by sakaki91
 
-VERSION="2"
+VERSION="2.1"
 
 if [[ $1 == "--version" || $1 == "-v" ]]; then
     printf "sxfetch-$VERSION\n" ; exit
@@ -38,4 +38,8 @@ printf "${LINE3} ${INFO}UPTIME:${RESET} ${UPTIME_H}:${UPTIME_M}\n"
 printf "${LINE4} ${INFO}SHELL:${RESET} ${SHELL_I}\n"
 printf "${LINE5} ${INFO}CPU:${RESET} ${CPU} ${CPU_CORES}\n"
 printf "${LINE6} ${INFO}RAM:${RESET} ${FREE_RAM} MiB / ${RAM} MiB\n"
-printf "${LINE7} ${INFO}SWAP:${RESET} ${FREE_SWAP} MiB / ${SWAP} MiB\n\n"
+if [[ $SWAP != 0 ]]; then
+    printf "${LINE7} ${INFO}SWAP:${RESET} ${FREE_SWAP} MiB / ${SWAP} MiB\n\n"
+else
+    printf "${LINE7} ${INFO}SWAP:${RESET} Disabled\n\n"
+fi
