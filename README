@@ -1,0 +1,20 @@
+> sxfetch - a small system information utility for Linux systems.
+=================================================================
+
+$ 
+    .--.      OS: Arch Linux
+   |o_o |     KERNEL: Linux 7.2.4-zen2-1-zen
+   |:_/ |     UPTIME: 9 hours, 6 minutes
+  //   \ \    SHELL: /usr/bin/bash
+ (|     | )   CPU: Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz (4)
+/'\._ _./'\   RAM: 8050 MiB / 15936 MiB
+\___)=(___/   SWAP: Disabled
+
+$ 
+
+> How to install?
+-----------------
+
+    > git clone https://github.com/sakaki91/sxfetch
+    > cd sxfetch
+    > sudo cp sxfetch /usr/local/bin
