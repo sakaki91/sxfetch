@@ -1,14 +1,16 @@
 #!/bin/bash
-# sxfetch by sakaki91
+
+# Copyright (C) by Sakaki, 2026.
 # LICENSE: BSD 2-Clause License <https://opensource.org/license/bsd-2-clause>
 
-VERSION="3"
+VERSION="4"
 
 if [[ $1 == "--version" || $1 == "-v" ]]; then
     printf "sxfetch-$VERSION\n" ; exit
 fi
 
 # System Information:
+export LC_ALL=C
 . /etc/os-release ; OS="$NAME"
 KERNEL="$(awk '{ print $1, $3 }' /proc/version)"
 UPTIME="$(uptime -p | awk -F 'up ' '{ print $2 ; exit }')"
@@ -17,8 +19,8 @@ RAM="$(awk '/MemTotal/ { printf "%.0f\n", $2 / 1024}' /proc/meminfo)"
 FREE_RAM="$(($RAM-$(awk '/MemAvailable/ { printf "%.0f\n", $2 / 1024}' /proc/meminfo)))"
 SWAP="$(awk '/SwapTotal/ { printf "%.0f\n", $2 / 1024}' /proc/meminfo)"
 FREE_SWAP="$(($SWAP-$(awk '/SwapFree/ { printf "%.0f\n", $2 / 1024}' /proc/meminfo)))"
-CPU="$(awk -F ': ' '/model name/ { print $2 ; exit }' /proc/cpuinfo)"
-CPU_CORES="($(awk -F ': ' '/cpu cores/ { print $2 ; exit }' /proc/cpuinfo))"
+CPU="$(lscpu | awk -F ': ' '/Model name:/ { print $2 ; exit }' | xargs)"
+CPU_CORES="$(lscpu | awk -F ': ' '/^CPU\(s\):/ {print $2}' | xargs)"
 
 # Colors:
 BOLD="\033[1m"
@@ -40,7 +42,7 @@ printf "${LINE1} ${INFO}OS:${RESET} ${OS}\n"
 printf "${LINE2} ${INFO}KERNEL:${RESET} ${KERNEL}\n"
 printf "${LINE3} ${INFO}UPTIME:${RESET} ${UPTIME}\n"
 printf "${LINE4} ${INFO}SHELL:${RESET} ${SHELL_I}\n"
-printf "${LINE5} ${INFO}CPU:${RESET} ${CPU} ${CPU_CORES}\n"
+printf "${LINE5} ${INFO}CPU:${RESET} ${CPU} (${CPU_CORES})\n"
 printf "${LINE6} ${INFO}RAM:${RESET} ${FREE_RAM} MiB / ${RAM} MiB\n"
 if [[ $SWAP != 0 ]]; then
     printf "${LINE7} ${INFO}SWAP:${RESET} ${FREE_SWAP} MiB / ${SWAP} MiB\n\n"
